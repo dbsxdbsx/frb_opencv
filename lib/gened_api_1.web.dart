@@ -41,6 +41,8 @@ external Api1WasmModule get wasmModule;
 class Api1WasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external Api1WasmModule bind(dynamic thisArg, String moduleName);
+  external void wire_test_no_param_1(NativePortType port_);
+
   external void wire_test_string_int_1(NativePortType port_, String s, int i);
 }
 
@@ -49,6 +51,9 @@ class Api1WasmModule implements WasmModule {
 class Api1Wire extends FlutterRustBridgeWasmWireBase<Api1WasmModule> {
   Api1Wire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<Api1WasmModule>(module));
+
+  void wire_test_no_param_1(NativePortType port_) =>
+      wasmModule.wire_test_no_param_1(port_);
 
   void wire_test_string_int_1(NativePortType port_, String s, int i) =>
       wasmModule.wire_test_string_int_1(port_, s, i);

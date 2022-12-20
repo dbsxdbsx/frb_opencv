@@ -14,6 +14,10 @@ import 'gened_api_1.io.dart' if (dart.library.html) 'gened_api_1.web.dart';
 import 'package:meta/meta.dart';
 
 abstract class Api1 {
+  Future<String> testNoParam1({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestNoParam1ConstMeta;
+
   Future<String> testStringInt1(
       {required String s, required int i, dynamic hint});
 
@@ -28,6 +32,22 @@ class Api1Impl implements Api1 {
   factory Api1Impl.wasm(FutureOr<WasmModule> module) =>
       Api1Impl(module as ExternalLibrary);
   Api1Impl.raw(this._platform);
+  Future<String> testNoParam1({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_no_param_1(port_),
+      parseSuccessData: _wire2api_String,
+      constMeta: kTestNoParam1ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestNoParam1ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_no_param_1",
+        argNames: [],
+      );
+
   Future<String> testStringInt1(
       {required String s, required int i, dynamic hint}) {
     var arg0 = _platform.api2wire_String(s);

@@ -21,6 +21,16 @@ use std::sync::Arc;
 
 // Section: wire functions
 
+fn wire_test_no_param_1_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_no_param_1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_no_param_1()),
+    )
+}
 fn wire_test_string_int_1_impl(
     port_: MessagePort,
     s: impl Wire2Api<String> + UnwindSafe,

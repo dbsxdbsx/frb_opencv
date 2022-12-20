@@ -2,6 +2,11 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
+pub extern "C" fn wire_test_no_param_1(port_: i64) {
+    wire_test_no_param_1_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_string_int_1(port_: i64, s: *mut wire_uint_8_list, i: u32) {
     wire_test_string_int_1_impl(port_, s, i)
 }

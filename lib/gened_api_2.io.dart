@@ -93,7 +93,7 @@ class Api2Wire implements FlutterRustBridgeWireBase {
   }
 
   late final _get_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(uintptr_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
           'get_dart_object');
   late final _get_dart_object =
       _get_dart_objectPtr.asFunction<Object Function(int)>();
@@ -107,7 +107,7 @@ class Api2Wire implements FlutterRustBridgeWireBase {
   }
 
   late final _drop_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
           'drop_dart_object');
   late final _drop_dart_object =
       _drop_dart_objectPtr.asFunction<void Function(int)>();
@@ -121,7 +121,7 @@ class Api2Wire implements FlutterRustBridgeWireBase {
   }
 
   late final _new_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<uintptr_t Function(ffi.Handle)>>(
+      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
           'new_dart_opaque');
   late final _new_dart_opaque =
       _new_dart_opaquePtr.asFunction<int Function(Object)>();
@@ -139,6 +139,20 @@ class Api2Wire implements FlutterRustBridgeWireBase {
           'init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr
       .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
+
+  void wire_test_no_param_2(
+    int port_,
+  ) {
+    return _wire_test_no_param_2(
+      port_,
+    );
+  }
+
+  late final _wire_test_no_param_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_test_no_param_2');
+  late final _wire_test_no_param_2 =
+      _wire_test_no_param_2Ptr.asFunction<void Function(int)>();
 
   void wire_test_string_int_2(
     int port_,
@@ -187,4 +201,3 @@ class wire_uint_8_list extends ffi.Struct {
 typedef DartPostCObjectFnType = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(DartPort, ffi.Pointer<ffi.Void>)>>;
 typedef DartPort = ffi.Int64;
-typedef uintptr_t = ffi.UnsignedLongLong;

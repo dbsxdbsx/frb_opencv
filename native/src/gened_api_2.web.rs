@@ -2,6 +2,11 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
+pub fn wire_test_no_param_2(port_: MessagePort) {
+    wire_test_no_param_2_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_string_int_2(port_: MessagePort, s: String, i: u32) {
     wire_test_string_int_2_impl(port_, s, i)
 }

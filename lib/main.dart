@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ffi.dart';
+import 'ffi.dart' if (dart.library.html) 'ffi_web.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,8 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    x1 = api1.testStringInt1(s: "input1", i: 1);
-    x2 = api2.testStringInt2(s: "input2", i: 2);
+    // x1 = api1.testStringInt1(s: "input1", i: 1);
+    // x2 = api2.testStringInt2(s: "input2", i: 2);
+    x1 = api1.testNoParam1();
+    x2 = api2.testNoParam2();
   }
 
   @override
