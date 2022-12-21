@@ -15,8 +15,9 @@ gen:
         --class-name \
         "Api1" \
         "Api2" \
-        --dart-decl-output "lib/bridge_definitions.dart" \
         --wasm
+
+    # --dart-decl-output "lib/bridge_definitions.dart" \
 
 
 lint:
