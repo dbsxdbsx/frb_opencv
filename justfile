@@ -15,9 +15,9 @@ gen:
         --class-name \
         "Api1" \
         "Api2" \
+        --dart-decl-output "lib/bridge_definitions.dart" \
         --wasm
 
-    # --dart-decl-output "lib/bridge_definitions.dart" \ // 这个在老版本frb（如1.38）中有问题
 
 lint:
     cd native && cargo fmt
