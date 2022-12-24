@@ -15,7 +15,9 @@ gen:
         --class-name \
         "Api1" \
         "Api2" \
-        --wasm
+        # --c-output ios/Runner/bridge_generated.h \
+        # --c-output macos/Runner/bridge_generated.h \
+        --wasm \
 
     # --dart-decl-output "lib/bridge_definitions.dart" \
 
